@@ -26,6 +26,7 @@ struct RecipeList: View {
                 Text(MessageHelper.Common.somethingWentWrong)
             }
         }
+        .navigationTitle("Recipes")
         .task {
             await viewModel.getAllRecipes()
         }
