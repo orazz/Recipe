@@ -39,14 +39,9 @@ struct AsyncImageView: View {
         defer { isLoading = false }
 
         if let gotImage = await viewModel.loadImage(from: url) {
-            await MainActor.run {
-                self.image = gotImage
-            }
+            self.image = gotImage
         } else {
-            await MainActor.run {
-                self.image = nil
-            }
+            self.image = nil
         }
-
     }
 }
