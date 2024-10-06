@@ -29,7 +29,7 @@ INetworkRequest for creating and managing network requests
 IRecipeNetworkService for handling recipe-specific network operations
 
 
-2. Image Caching: Implemented image caching using NSCache to improve performance and reduce network usage when displaying recipe images.
+2. Image Caching: Implemented image caching using NSCache and FileManager to improve performance and reduce network usage when displaying recipe images.
 3. MVVM Architecture: We utilized the MVVM (Model-View-ViewModel) pattern, with a ViewModel acting as an intermediary between the networking layer and the UI.
 
 ## Time Spent
@@ -38,15 +38,15 @@ Approximate time spent on this project: ~4 hours
 ## Trade-offs and Decisions
 
 Custom Networking Layer vs. Third-party Libraries: Decided to create a custom networking layer instead of using a third-party library. This gives us more control over the implementation but required more development time.
-NSCache for Image Caching: Chose NSCache for its simplicity and built-in memory management. However, this doesn't persist cached images between app launches.
+Added disk and memory caching to improve performance.
 
 ## Weakest Part of the Project
 
-The weakest part of the project is the image caching implementation. I used NSCache for in-memory caching, which provides some performance benefits but has limitations:
+The weakest part of the project was the initial image caching implementation, which lacked persistence and flexibility. To address this, I added both memory and disk caching:
 
-1. It doesn't persist cached images between app launches, potentially leading to unnecessary network requests when the app restarts.
-2. There is no disk caching, which could provide more robust caching capabilities but comes with its own performance considerations.
-3. While third-party libraries like Kingfisher could offer more advanced caching features, I chose to implement caching by myself to demonstrate understanding of iOS development concepts.
+1.	Cached images are now stored across app launches, eliminating unnecessary network requests after restarts.
+2.	Both caching mechanisms work together to ensure efficient storage and retrieval of images.
+3.	While libraries like Kingfisher offer advanced features, I implemented the solution myself to showcase a deeper understanding of iOS development. However, further optimizations could still be made to enhance performance in edge cases.
 
 ## External Code and Dependencies
 
