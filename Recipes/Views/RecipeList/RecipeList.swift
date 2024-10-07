@@ -39,7 +39,7 @@ struct RecipeList: View {
 
         var body: some View {
             GeometryReader { geometry in
-                let size = geometry.size.width/2 - 2 * .padding
+                let size = (geometry.size.width/2 - 2 * .padding)
                 ScrollView {
                     LazyVGrid(columns: columns,
                               spacing: .padding) {
@@ -56,7 +56,7 @@ struct RecipeList: View {
                                     height: size,
                                     viewModel: viewModel
                                 )
-                                .frame(height: geometry.size.width/2 + .labelHeight)
+                                .frame(height: geometry.size.width/2 + .labelHeight, alignment: .top)
                             }
                         }
                     }

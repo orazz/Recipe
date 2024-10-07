@@ -22,7 +22,10 @@ struct RecipeItemView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(
+            alignment: .leading,
+            spacing: .defaultSpacing
+        ) {
             AsyncImageView(url: item.photoURLSmall, viewModel: viewModel)
                 .frame(width: width, height: height)
                 .clipped()
@@ -30,9 +33,11 @@ struct RecipeItemView: View {
             Text(item.getName)
                 .font(.subheadline)
                 .foregroundColor(Color(UIColor.label))
-                .multilineTextAlignment(.center)
-                .padding(.vertical, .defaultSpacing)
-            Spacer()
+                .multilineTextAlignment(.leading)
+                .lineLimit(2)
+            Text(item.getCuisineType)
+                .font(.footnote)
+                .foregroundColor(Color(UIColor.lightGray))
         }
     }
 }
