@@ -9,30 +9,11 @@ import Foundation
 import NetworkLayer
 import UIKit
 
-// MARK: - Protocols
-
-protocol IImageCache {
-    func getImage(for key: String) -> UIImage?
-    func setImage(_ image: UIImage, for key: String)
-}
+// MARK: - Protocol
 
 protocol IRecipeNetworkService {
     func getAllRecipes() async throws -> ServerResponse
     func loadImage(from urlString: String) async throws -> UIImage
-}
-
-// MARK: - ImageCache
-
-class ImageCache: IImageCache {
-    private let cache = NSCache<NSString, UIImage>()
-
-    func getImage(for key: String) -> UIImage? {
-        cache.object(forKey: NSString(string: key))
-    }
-
-    func setImage(_ image: UIImage, for key: String) {
-        cache.setObject(image, forKey: NSString(string: key))
-    }
 }
 
 // MARK: - RecipeNetworkService

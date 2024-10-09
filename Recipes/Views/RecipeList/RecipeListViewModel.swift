@@ -30,7 +30,7 @@ final class ReceipeViewModel: ObservableObject {
     func getAllRecipes() async {
         state = .loading
         do {
-            let items: ServerResponse  = try await recipeNetworkService.getAllRecipes()
+            let items: ServerResponse = try await recipeNetworkService.getAllRecipes()
             state = .complete(items.recipes)
         } catch {
             state = .error
